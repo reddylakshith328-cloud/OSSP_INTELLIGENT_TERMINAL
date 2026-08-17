@@ -1,19 +1,19 @@
 # ShellForge
 
-ShellForge is a Unix-like shell developed as part of the Operating Systems and Systems Programming Project-Based Learning course.
+ShellForge is a Unix-like shell developed for an Operating Systems and Systems Programming project.
 
-## Features (Week 1)
+### Features
 
-- Interactive REPL loop
-- Makefile-based build
-- Git repository
-- Linux development environment
+* Interactive command-line interface
+* Creates processes using `fork()`
+* Executes commands using `exec()`
+* Parent waits using `wait()`
+* Displays Parent and Child PIDs
 
-## Build
+### Technologies
 
-make
-
-## Run
-
-make run
-
+* C
+* Linux/Ubuntu
+* GCC
+* Make
+* Git/GitHub
