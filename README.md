@@ -1,6 +1,4 @@
-# ShellForge
-
-ShellForge is a Unix-like shell developed for an Operating Systems and Systems Programming project.
+ developed for an Operating Systems and Systems Programming project.
 
 ### Features
 
