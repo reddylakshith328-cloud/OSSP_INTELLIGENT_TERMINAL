@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g -Iinclude
 
-SRC = src/main.c
-TARGET = bin/shellforge
+SRC = src/main.c src/input.c
+TARGET = bin/intelligent_terminal
 
 all: $(TARGET)
 
