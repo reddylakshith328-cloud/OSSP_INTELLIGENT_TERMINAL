@@ -1,17 +1,31 @@
- developed for an Operating Systems and Systems Programming project.
+# Intelligent Linux Terminal
+
+An intelligent Linux command-line terminal developed as part of the Operating Systems and Systems Programming (OSSP) Project-Based Learning course.
+
+## Week 1 – Basic Terminal and REPL
 
 ### Features
 
-* Interactive command-line interface
-* Creates processes using `fork()`
-* Executes commands using `exec()`
-* Parent waits using `wait()`
-* Displays Parent and Child PIDs
+- Interactive command prompt
+- Read user input
+- Display entered commands
+- Exit command
+- C-based implementation
+- Makefile-based compilation
+- Git and GitHub version control
 
-### Technologies
+## Project Structure
 
-* C
-* Linux/Ubuntu
-* GCC
-* Make
-* Git/GitHub
+```text
+OSSP_INTELLIGENT_TERMINAL/
+├── Makefile
+├── README.md
+├── .gitignore
+├── include/
+│   └── shell.h
+├── src/
+│   └── main.c
+├── docs/
+├── tests/
+├── screenshots/
+└── bin/
