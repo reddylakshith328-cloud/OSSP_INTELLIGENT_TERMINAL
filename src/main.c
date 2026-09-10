@@ -3,12 +3,13 @@
 #include <string.h>
 
 #include "input.h"
+#include "parser.h"
 
 int main(void)
 {
     printf("========================================\n");
-    printf(" Welcome to Intelligent Linux Terminal\n");
-    printf("             Version 2.0\n");
+    printf(" Intelligent Linux Terminal\n");
+    printf("             Version 3.0\n");
     printf("========================================\n");
 
     while (1)
@@ -24,8 +25,16 @@ int main(void)
             break;
         }
 
-        printf("You entered : %s\n", input);
+        char **tokens = parse_line(input);
 
+        printf("\nParsed Tokens\n");
+
+        for (int i = 0; tokens[i] != NULL; i++)
+        {
+            printf("argv[%d] = %s\n", i, tokens[i]);
+        }
+
+        free_tokens(tokens);
         free(input);
     }
 
