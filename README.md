@@ -99,3 +99,23 @@ The project progressively develops a terminal capable of accepting user commands
         | Command correction        |
         | Error guidance            |
         +---------------------------+
+
+        ---
+
+## Week 3 Features
+
+- Command parsing using `strtok()`
+- Splitting commands into tokens
+- Dynamic `argv[]` creation
+- Support for command arguments
+- Parser module using `parser.c` and `parser.h`
+- Preparing commands for `execvp()`
+
+### Example
+
+```text
+ls -l /home
+     ↓
+ls | -l | /home
+     ↓
+argv[]
