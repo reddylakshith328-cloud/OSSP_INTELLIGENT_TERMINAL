@@ -1,5 +1,4 @@
-kcat > README.md <<'EOF'
-# ShellForge – Intelligent Linux Terminal
+k# ShellForge – Intelligent Linux Terminal
 
 A simple Linux terminal shell developed using C.
 
@@ -34,6 +33,16 @@ A simple Linux terminal shell developed using C.
 - Parent process synchronization using `waitpid()`
 - Error handling using `perror()`
 - Executes real Linux commands
+
+## Week 5 – Built-in Commands and Environment Variables
+
+- `cd` command
+- `pwd` command
+- `help` command
+- `clear` command
+- `exit` command
+- `env` command
+- Environment variable support
 
 ## Project Structure
 
