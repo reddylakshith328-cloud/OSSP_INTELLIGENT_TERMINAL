@@ -3,7 +3,7 @@
 
 #define INITIAL_BUFFER_SIZE 64
 
-char *read_input(void)
+char *read_line(void)
 {
     size_t size = INITIAL_BUFFER_SIZE;
     size_t length = 0;

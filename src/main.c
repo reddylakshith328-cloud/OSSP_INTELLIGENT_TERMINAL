@@ -1,41 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "input.h"
 #include "parser.h"
+#include "process.h"
 
-int main(void)
+int main()
 {
-    printf("========================================\n");
-    printf(" Intelligent Linux Terminal\n");
-    printf("             Version 3.0\n");
-    printf("========================================\n");
+    char *line;
+    char **tokens;
 
     while (1)
     {
         printf("myshell> ");
 
-        char *input = read_input();
+        line = read_line();
 
-        if (strcmp(input, "exit") == 0)
+        if (strcmp(line, "exit") == 0)
         {
-            printf("Exiting Intelligent Linux Terminal...\n");
-            free(input);
+            free(line);
             break;
         }
 
-        char **tokens = parse_line(input);
+        tokens = parse_line(line);
 
-        printf("\nParsed Tokens\n");
-
-        for (int i = 0; tokens[i] != NULL; i++)
-        {
-            printf("argv[%d] = %s\n", i, tokens[i]);
-        }
+        execute(tokens);
 
         free_tokens(tokens);
-        free(input);
+        free(line);
     }
 
     return 0;

@@ -1,12 +1,17 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g -Iinclude
 
-SRC = src/main.c src/input.c src/parser.c
-TARGET = bin/intelligent_terminal
+SRC = \
+src/main.c \
+src/input.c \
+src/parser.c \
+src/process.c
+
+TARGET = bin/shellforge
 
 all: $(TARGET)
 
-$(TARGET): $(SRC)
+$(TARGET):
 	mkdir -p bin
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
