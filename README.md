@@ -1,4 +1,4 @@
-k# ShellForge – Intelligent Linux Terminal
+# ShellForge – Intelligent Linux Terminal
 
 A simple Linux terminal shell developed using C.
 
@@ -43,6 +43,15 @@ A simple Linux terminal shell developed using C.
 - `exit` command
 - `env` command
 - Environment variable support
+
+## Week 6 – Signal Handling
+
+- `SIGINT` handling
+- `SIGTSTP` handling
+- `SIGCHLD` handling
+- Safe handling of `Ctrl+C`
+- Child process cleanup
+- Prevents zombie processes
 
 ## Project Structure
 

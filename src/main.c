@@ -6,11 +6,14 @@
 #include "parser.h"
 #include "process.h"
 #include "builtin.h"
+#include "signals.h"
 
 int main()
 {
     char *line;
     char **tokens;
+
+    initialize_signals();
 
     while (1)
     {
