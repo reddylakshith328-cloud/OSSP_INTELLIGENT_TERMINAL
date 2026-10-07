@@ -8,6 +8,7 @@
 #include "builtin.h"
 #include "signals.h"
 #include "pipes.h"
+#include "redirect.h"
 
 static void tokenize(char *str, char **argv)
 {
@@ -78,13 +79,21 @@ int main()
         }
 
         /*
-         * Existing Week 1-6 command execution
+         * Normal command parsing
          */
         tokens = parse_line(line);
 
+        /*
+         * Built-in commands first,
+         * then redirection,
+         * then normal execution.
+         */
         if (execute_builtin(tokens) == 0)
         {
-            execute(tokens);
+            if (execute_redirection(tokens) == 0)
+            {
+                execute(tokens);
+            }
         }
 
         free_tokens(tokens);
