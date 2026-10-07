@@ -16,8 +16,12 @@ all:
 	mkdir -p bin
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
+asan:
+	mkdir -p bin
+	$(CC) $(CFLAGS) -fsanitize=address $(SRC) -o $(TARGET)
+
 run: all
 	./$(TARGET)
 
 clean:
-	rm -f $(TARGET)
+	rm -rf bin/*
