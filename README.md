@@ -53,6 +53,42 @@ A simple Linux terminal shell developed using C.
 - Child process cleanup
 - Prevents zombie processes
 
+## Week 7 – Pipes and IPC
+
+- Anonymous pipe support
+- Command piping using `|`
+- Inter-process communication
+- `pipe()`
+- `dup2()`
+- Multiple process execution
+- Examples such as `ls | wc` and `ps -ef | grep bash`
+
+## Week 8 – Memory Debugging
+
+- Memory leak detection using Valgrind
+- Debugging using GDB
+- AddressSanitizer support
+- Defensive programming practices
+- Improved error handling
+
+## Week 9 – I/O Redirection
+
+- File descriptor management
+- Output redirection (`>`)
+- Input redirection (`<`)
+- Append redirection (`>>`)
+- Error redirection (`2>`)
+- File handling using `open()`, `close()`, and `dup2()`
+
+## Week 10 – Threads and Concurrency
+
+- POSIX thread support
+- Background monitoring thread
+- `pthread_create()`
+- `pthread_join()`
+- Mutex synchronization
+- Race condition demonstration
+
 ## Project Structure
 
 ```text
@@ -65,26 +101,51 @@ OSSP_INTELLIGENT_TERMINAL/
 ├── tests/
 ├── Makefile
 └── README.md
-## Week 8 Features
+                         USER
+                          |
+                          v
+                  +---------------+
+                  |   ShellForge   |
+                  |      Shell    |
+                  +-------+-------+
+                          |
+                          v
+                   Command Parser
+                          |
+              +-----------+-----------+
+              |                       |
+              v                       v
+        Built-in Command       External Command
+              |                       |
+              v                     fork()
+          Execute                    /   \
+                                    /     \
+                               Parent       Child
+                                 |            |
+                             waitpid()      execvp()
+                                 |            |
+                                 |         Program
+                                 |            |
+                                 +-----+------+
+                                       |
+                                       v
+                                     Output
 
-- Memory leak detection using Valgrind
-- Debugging using GDB
-- AddressSanitizer support
-- Defensive programming practices
-- Improved error handling
-## Week 9 Features
 
-- File descriptor management
-- Output redirection (>)
-- Input redirection (<)
-- Append redirection (>>)
-- Error redirection (2>)
-- File handling using open(), close(), and dup2()
-## Week 10 Features
+                 +-------------------------+
+                 |    Process Manager      |
+                 |                         |
+                 | fork / exec / waitpid   |
+                 | pipes / redirection     |
+                 | signals / job control  |
+                 +-------------------------+
 
-- POSIX thread support
-- Background monitoring thread
-- pthread_create()
-- pthread_join()
-- Mutex synchronization
-- Race condition demonstration
+                 +-------------------------+
+                 |    Resource Monitor     |
+                 |                         |
+                 | /proc                   |
+                 | CPU                     |
+                 | Memory                  |
+                 | Processes               |
+                 | Threads + Mutex         |
+                 +-------------------------+
