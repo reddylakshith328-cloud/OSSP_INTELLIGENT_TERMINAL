@@ -9,6 +9,7 @@
 #include "signals.h"
 #include "pipes.h"
 #include "redirect.h"
+#include "thread.h"
 
 static void tokenize(char *str, char **argv)
 {
@@ -31,6 +32,7 @@ int main()
     char **tokens;
 
     initialize_signals();
+    start_monitor_thread();
 
     while (1)
     {
