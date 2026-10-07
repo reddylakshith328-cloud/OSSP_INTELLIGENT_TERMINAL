@@ -7,6 +7,22 @@
 #include "process.h"
 #include "builtin.h"
 #include "signals.h"
+#include "pipes.h"
+
+static void tokenize(char *str, char **argv)
+{
+    int i = 0;
+
+    char *token = strtok(str, " \t\n");
+
+    while (token != NULL)
+    {
+        argv[i++] = token;
+        token = strtok(NULL, " \t\n");
+    }
+
+    argv[i] = NULL;
+}
 
 int main()
 {
@@ -27,6 +43,43 @@ int main()
             break;
         }
 
+        /*
+         * Week 7: Pipe handling
+         */
+        if (strchr(line, '|') != NULL)
+        {
+            char *argv1[64];
+            char *argv2[64];
+
+            char *left = strtok(line, "|");
+            char *right = strtok(NULL, "|");
+
+            if (left == NULL || right == NULL)
+            {
+                printf("Invalid pipe command\n");
+                free(line);
+                continue;
+            }
+
+            tokenize(left, argv1);
+            tokenize(right, argv2);
+
+            if (argv1[0] == NULL || argv2[0] == NULL)
+            {
+                printf("Invalid pipe command\n");
+                free(line);
+                continue;
+            }
+
+            execute_pipe(argv1, argv2);
+
+            free(line);
+            continue;
+        }
+
+        /*
+         * Existing Week 1-6 command execution
+         */
         tokens = parse_line(line);
 
         if (execute_builtin(tokens) == 0)
